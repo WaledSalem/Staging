@@ -117,7 +117,7 @@ resource "aws_eip" "main" {
 ##============================================
 #Create VM ##resource 7##
 resource "aws_instance" "main" {
-  ami           = "ami-096cb92bb3580c759"
+  ami           = "ami-08bac620dc84221eb"
   instance_type = "t2.medium"
     key_name = "project"//your key
   network_interface {
