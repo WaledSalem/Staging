@@ -67,6 +67,14 @@ resource "aws_security_group" "allow_web" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    description = "SSH"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]// change to anyone to access
+  }
+
   egress {
     from_port = 0
     to_port = 0
@@ -105,8 +113,8 @@ resource "aws_network_interface" "main" {
 #create VM
 resource "aws_instance" "main" {
   ami = "ami-096cb92bb3580c759"
-  instance_type= "t2.micro"
-  
+  instance_type= "t2.medium"
+  key_name = "serin"//your key
   network_interface {
     network_interface_id = aws_network_interface.main.id
     device_index = 0
